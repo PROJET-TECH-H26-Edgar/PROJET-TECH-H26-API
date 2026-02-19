@@ -11,6 +11,7 @@
 ## Installation du serveur 
 
   1. Installation du Broker MQTT (Mosquitto)
+     
       sudo apt install mosquitto mosquitto-clients -y
      
       sudo systemctl enable mosquitto
@@ -18,17 +19,19 @@
       sudo systemctl start mosquitto
 
 
-  3. Installation de MySQL
+  2. Installation de MySQL
        sudo apt install mysql-server -y
      
        sudo mysql_secure_installation
 
 
-  5. Installation de l'API
+  3. Installation de l'API
+     
        sudo apt install nodejs npm -y
 
 
-  6. Installation du FireWall
+  4. Installation du FireWall
+     
       sudo ufw allow OpenSSH
       sudo ufw allow 443
      
