@@ -70,18 +70,17 @@
 
   2. MariaDB
 
-       Création de la base de données
-        ```bash
-          CREATE DATABASE keyDispenser;
-        ```
-       Création d'un utilisateur
-       ```bash
-         CREATE USER 'apiuser'@'localhost' IDENTIFIED BY 'motdepasse';
-         GRANT ALL PRIVILEGES ON keyDispenser.* TO 'apiuser'@'localhost';
-         FLUSH PRIVILEGES;
-       ```
-       Lancement du script de création
-
-         Fichier script.sql dans le repository
+     Création de la base de données
+     ```bash
+       CREATE DATABASE keyDispenser;
+      ```
+     Création d'un utilisateur
+      ```bash
+      CREATE USER 'apiuser'@'localhost' IDENTIFIED BY 'motdepasse';
+      GRANT ALL PRIVILEGES ON keyDispenser.* TO 'apiuser'@'localhost';
+      FLUSH PRIVILEGES;
+     ```
+     Lancement du script de création
+     Fichier script.sql dans le repository
      
        
