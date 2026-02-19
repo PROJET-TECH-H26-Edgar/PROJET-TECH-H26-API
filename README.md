@@ -59,16 +59,17 @@
        allow_anonymous true
       ```
        Test du fonctionnelment
+       Sur l'ordinateur local :
+     ```bash
+       mosquitto_sub -t test
+      ```
        Sur le VSP :
      ```bash
         mosquitto_pub -t test -m "hello"
       ```
-      Sur l'ordinateur local :
-     ```bash
-       mosquitto_sub -t test
-      ```
+      
 
-  2. MariaDB
+  3. MariaDB
 
      Création de la base de données
      ```bash
