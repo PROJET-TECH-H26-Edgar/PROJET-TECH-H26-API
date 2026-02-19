@@ -76,9 +76,9 @@
       ```
      Création d'un utilisateur
       ```bash
-       CREATE USER 'apiuser'@'localhost' IDENTIFIED BY 'motdepasse';
-       GRANT ALL PRIVILEGES ON keyDispenser.* TO 'apiuser'@'localhost';
-       FLUSH PRIVILEGES;
+        CREATE USER 'apiuser'@'localhost' IDENTIFIED BY 'motdepasse';
+        GRANT ALL PRIVILEGES ON keyDispenser.* TO 'apiuser'@'localhost';
+        FLUSH PRIVILEGES;
      ```
      Lancement du script de création
      
