@@ -19,9 +19,13 @@
       sudo systemctl start mosquitto
 
 
-  2. Installation de MySQL
+  2. Installation de MariaDB
 
-       sudo apt install mysql-server -y
+       sudo apt install mariadb-server mariadb-client -y
+     
+       sudo systemctl start mariadb
+     
+       sudo systemctl enable mariadb
      
        sudo mysql_secure_installation
 
