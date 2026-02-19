@@ -1,6 +1,6 @@
-## Distributeur de Clés Intelligent – Setup Serveur
+# Distributeur de Clés Intelligent – Setup Serveur
 
-# Environnement recommandé
+## Environnement recommandé
   VPS / Serveur : Ubuntu 22.04
   
   Accès SSH
@@ -8,7 +8,7 @@
   IP publique
 
 
-# Installation du serveur 
+## Installation du serveur 
 
   1. Installation du Broker MQTT (Mosquitto)
       sudo apt install mosquitto mosquitto-clients -y
