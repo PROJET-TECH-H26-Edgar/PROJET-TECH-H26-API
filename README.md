@@ -2,7 +2,9 @@
 
 # Environnement recommandé
   VPS / Serveur : Ubuntu 22.04
+  
   Accès SSH
+  
   IP publique
 
 
