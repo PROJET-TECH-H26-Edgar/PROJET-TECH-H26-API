@@ -20,17 +20,18 @@
 
 
   2. Installation de MySQL
+
        sudo apt install mysql-server -y
      
        sudo mysql_secure_installation
 
 
-  3. Installation de l'API
+  4. Installation de l'API
      
        sudo apt install nodejs npm -y
 
 
-  4. Installation du FireWall
+  5. Installation du FireWall
      
       sudo ufw allow OpenSSH
       sudo ufw allow 443
