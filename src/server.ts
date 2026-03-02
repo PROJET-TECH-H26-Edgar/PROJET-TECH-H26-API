@@ -28,7 +28,7 @@ Routes
 
 app.get("/", (_req, res) => {
   res.json({
-    name: "Pirates API",
+    name: "DistributeurCle",
     status: "running",
     docs: "/swagger",
     health: "/api/ping",
@@ -47,11 +47,9 @@ Swagger
 -------------------------------------------------
 */
 
-app.use(
-  "/swagger",
-  swaggerUi.serve,
-  swaggerUi.setup(yaml.load(path.join(__dirname, "./swagger.yml"))),
-);
+const swaggerPath = path.resolve(process.cwd(), "src/swagger.yml");
+
+app.use("/swagger", swaggerUi.serve, swaggerUi.setup(yaml.load(swaggerPath)));
 
 /*
 -------------------------------------------------

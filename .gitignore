@@ -36,7 +36,3 @@ Thumbs.db
 
 # ...BUT keep this file
 !.vscode/settings.json
-
-# Project noise
-pirate-api-A25/
-    

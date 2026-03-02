@@ -49,7 +49,7 @@ IP publique
 
 ### Pré-requis
 
-- Avoir Apache (ou NGINX) et un certificat HTTPS
+-NGINX et un certificat HTTPS
 
 ### Procédures
 
@@ -70,7 +70,7 @@ sudo apt install python3-certbot-nginx  # ou python3-certbot-nginx
 **Générer le certificat**
 
 ```bash
-sudo certbot --apache -d distributeurCle.edwrdedgar.me -d distributeurCle.edwrdedgar.me
+certbot --nginx -d distributeurCle.edwrdedgar.me
 ```
 
 **Tester le renouvellement automatique**
@@ -191,6 +191,6 @@ npm start
 
 ```bash
 npm install -g pm2
-pm2 start npm --name "pirateServer" -- run dev
+pm2 start npm --name "APICle" -- run dev
 
 ```
