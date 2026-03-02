@@ -4,7 +4,7 @@ info:
   version: 1.0.0
 
 servers:
-  - url: http://localhost:3001/api
+  - url: https://distributeurcle.edwrdledgar.me/api
 
 paths:
   /auth/register:
