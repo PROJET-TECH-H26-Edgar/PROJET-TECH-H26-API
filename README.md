@@ -191,6 +191,6 @@ npm start
 
 ```bash
 npm install -g pm2
-pm2 start npm --name "pirateServer" -- run dev
+pm2 start npm --name "APICle" -- run dev
 
 ```
