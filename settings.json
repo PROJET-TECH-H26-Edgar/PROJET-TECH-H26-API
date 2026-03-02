@@ -1,0 +1,14 @@
+{
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "apiKey": ""
+    },
+    "local": {
+      "baseUrl": "https://",
+      "token": "",
+      "shipId": "fc7001d4-bc80-468f-9ca3-cbda91a3f605",
+      "recipient": "Etudiant",
+      "clientId": "EdgarG"
+    }
+  }
+}
