@@ -84,5 +84,33 @@
      Lancement du script de création
      
      Fichier script.sql dans le repository
+
+# Mise en place du démarage automatique : 
+  ```bash
+  sudo nano /etc/systemd/system/distributeur-api.service
+
+    [Unit]
+  Description=API Distributeur de Cles
+  After=network.target
+  
+  [Service]
+  Type=simple
+  User=root
+  WorkingDirectory=/var/www/api/PROJET-TECH-H26-API
+  ExecStart=/usr/bin/node dist/server.js
+  Restart=always
+  Environment=NODE_ENV=production
+  
+  [Install]
+  WantedBy=multi-user.target
+
+  sudo systemctl daemon-reload
+
+  sudo systemctl enable distributeur-api
+
+  sudo systemctl start distributeur-api
+
+  sudo systemctl status distributeur-api
+  ```
      
        
