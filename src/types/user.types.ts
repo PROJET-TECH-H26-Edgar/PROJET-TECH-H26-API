@@ -1,18 +1,21 @@
 export interface User {
-  id: string;
-  username: string;
-  passwordHash: string;
-  isAdmin: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  idUser: number;
+  lastName: string;
+  name: string;
+  mail: string;
+  idRole: number;
+  createAt: Date;
+  password: string;
 }
 
 export interface RegisterUserRequest {
-  username: string;
+  lastName: string;
+  name: string;
+  mail: string;
   password: string;
 }
 
 export interface LoginUserRequest {
-  username: string;
+  mail: string;
   password: string;
 }

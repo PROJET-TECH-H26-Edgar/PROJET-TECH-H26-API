@@ -13,8 +13,8 @@ export type ErrorCode =
   | "AUTH_REQUIRED"
   | "FORBIDDEN"
   | "CANNOT_REGISTER_WHEN_LOGGED_IN"
-  | "REMOTE_SERVICE_ERROR";
-
+  | "REMOTE_SERVICE_ERROR"
+  | "USER_ALREADY_EXISTS";
 interface AppErrorOptions {
   statusCode?: number;
   code?: ErrorCode;

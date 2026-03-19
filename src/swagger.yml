@@ -2,10 +2,8 @@ openapi: 3.0.0
 info:
   title: Auth API
   version: 1.0.0
-
 servers:
-  - url: https://distributeurcle.edwrdledgar.me/api
-
+  - url: http://localhost:3001/api
 paths:
   /auth/register:
     post:
@@ -18,16 +16,23 @@ paths:
           application/json:
             schema:
               type: object
-              required: [username, password]
+              required: [lastName, name, mail, password]
               properties:
-                username:
+                lastName:
                   type: string
+                  example: Gegout
+                name:
+                  type: string
+                  example: Edgar
+                mail:
+                  type: string
+                  example: edgar@mail.com
                 password:
                   type: string
+                  example: Edgar1011
       responses:
-        200:
+        201:
           description: User registered
-
   /auth/login:
     post:
       summary: Login user
@@ -39,12 +44,14 @@ paths:
           application/json:
             schema:
               type: object
-              required: [username, password]
+              required: [mail, password]
               properties:
-                username:
+                mail:
                   type: string
+                  example: edgar@mail.com
                 password:
                   type: string
+                  example: Edgar1011
       responses:
         200:
           description: Login success
@@ -55,7 +62,6 @@ paths:
                 properties:
                   token:
                     type: string
-
   /auth/logout:
     post:
       summary: Logout user
@@ -64,7 +70,6 @@ paths:
       responses:
         200:
           description: Logout success
-
 components:
   securitySchemes:
     bearerAuth:
