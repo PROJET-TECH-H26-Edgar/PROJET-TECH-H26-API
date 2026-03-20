@@ -70,9 +70,75 @@ paths:
       responses:
         200:
           description: Logout success
+
+  /key:
+    get:
+      summary: Get all keys
+      tags:
+        - Keys
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: List of keys
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Key"
+
+  /key/{id}:
+    get:
+      summary: Get key by ID
+      tags:
+        - Keys
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      responses:
+        200:
+          description: Key found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Key"
+        404:
+          description: Key not found
+
 components:
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
       bearerFormat: JWT
+  schemas:
+    Key:
+      type: object
+      properties:
+        idKey:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Clé 1
+        idRole:
+          type: integer
+          example: 1
+        rfidUid:
+          type: string
+          example: 8C:76:0B:30
+        createAt:
+          type: string
+          format: date
+          example: 2026-03-19
+        status:
+          type: string
+          enum: [Libérer, Occupée, Indisponible]
+          example: Libérer
