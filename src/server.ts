@@ -12,6 +12,7 @@ import swaggerUi from "swagger-ui-express";
 
 import { authRouter } from "./routes/auth.routes";
 import { errorHandler } from "./middleware/error.middleware";
+import { keyRouter } from "./routes/key.routes";
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -40,6 +41,7 @@ app.get("/api/ping", (_req, res) => {
 });
 
 app.use("/api/auth", authRouter());
+app.use("/api/key", keyRouter());
 
 /*
 -------------------------------------------------

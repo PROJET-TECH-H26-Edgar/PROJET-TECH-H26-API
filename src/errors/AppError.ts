@@ -14,6 +14,7 @@ export type ErrorCode =
   | "FORBIDDEN"
   | "CANNOT_REGISTER_WHEN_LOGGED_IN"
   | "REMOTE_SERVICE_ERROR"
+  | "RESOURCE_NOT_FOUND"
   | "USER_ALREADY_EXISTS";
 interface AppErrorOptions {
   statusCode?: number;
