@@ -42,4 +42,19 @@ export class KeyRepository {
       status,
     } as Key;
   }
+  async create(data: {
+    name: string;
+    idRole: number;
+    rfidUid: string;
+  }): Promise<Key> {
+    const result = await db.insert(keys).values({
+      name: data.name,
+      idRole: data.idRole,
+      rfidUid: data.rfidUid,
+      createAt: new Date(),
+    });
+
+    const newKey = await this.findById(result[0].insertId);
+    return newKey!;
+  }
 }

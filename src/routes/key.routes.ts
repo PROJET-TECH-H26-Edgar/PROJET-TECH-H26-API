@@ -7,6 +7,7 @@ export const keyRouter = (): Router => {
 
   router.get("/", keyController.getAll);
   router.get("/:id", keyController.getById);
+  router.post("/create", keyController.createKey);
 
   return router;
 };
