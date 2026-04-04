@@ -112,6 +112,52 @@ paths:
         404:
           description: Key not found
 
+  /key/create:
+    post:
+      summary: Create a new key
+      tags:
+        - Keys
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name, idRole, rfidUid]
+              properties:
+                name:
+                  type: string
+                  example: Clé 3
+                idRole:
+                  type: integer
+                  example: 1
+                rfidUid:
+                  type: string
+                  example: 8C:76:0B:30
+      responses:
+        201:
+          description: Key created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Key"
+        400:
+          description: Missing required fields
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Champs manquants
+                  required:
+                    type: array
+                    items:
+                      type: string
+                    example: [name, idRole, rfidUid]
 components:
   securitySchemes:
     bearerAuth:

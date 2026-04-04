@@ -22,4 +22,23 @@ export class KeyController {
       next(error);
     }
   };
+
+  async createKey(req: Request, res: Response): Promise<void> {
+    const { name, idRole, rfidUid } = req.body;
+
+    if (!name || !idRole || !rfidUid) {
+      res.status(400).json({
+        message: "Champs manquants",
+        required: ["name", "idRole", "rfidUid"],
+      });
+      return;
+    }
+
+    const key = await keyService.createKey({
+      name,
+      idRole: parseInt(idRole),
+      rfidUid,
+    });
+    res.status(201).json(key);
+  }
 }
