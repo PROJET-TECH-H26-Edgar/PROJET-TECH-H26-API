@@ -34,5 +34,4 @@ export interface Borrow {
   idKey: number;
   borrowTime: Date;
   returnTime: Date;
-  status: string;
 }
