@@ -41,4 +41,20 @@ export class KeyController {
     });
     res.status(201).json(key);
   }
+  updateStatus = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const id = parseInt(req.params.id as string);
+      const { status } = req.body;
+
+      if (!status) {
+        res.status(400).json({ message: "Champ 'status' manquant" });
+        return;
+      }
+
+      await keyService.updateKeyStatus(id, status);
+      res.status(200).json({ message: "Status mis à jour" });
+    } catch (error) {
+      next(error);
+    }
+  };
 }

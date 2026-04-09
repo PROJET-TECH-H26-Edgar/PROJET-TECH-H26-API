@@ -158,6 +158,23 @@ paths:
                     items:
                       type: string
                     example: [name, idRole, rfidUid]
+
+  /borrows:
+    get:
+      summary: Get all borrows
+      tags:
+        - Borrows
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: List of borrows
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Borrow"
 components:
   securitySchemes:
     bearerAuth:
@@ -188,3 +205,23 @@ components:
           type: string
           enum: [Libérer, Occupée, Indisponible]
           example: Libérer
+    Borrow:
+      type: object
+      properties:
+        idHBorrow:
+          type: integer
+          example: 1
+        keyName:
+          type: string
+          example: Clé 1
+        userName:
+          type: string
+          example: Gegout Edgar
+        borrowTime:
+          type: string
+          format: date-time
+          example: 2026-03-19T08:00:00Z
+        returnTime:
+          type: string
+          format: date-time
+          example: 2026-03-19T17:00:00Z

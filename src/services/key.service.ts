@@ -1,5 +1,5 @@
 import { KeyRepository } from "../repositories/key.repository";
-import { Key } from "../types/user.types";
+import { Key } from "../types/types.types";
 import { AppError } from "../errors/AppError";
 
 const keyRepository = new KeyRepository();
@@ -34,5 +34,9 @@ export class KeyService {
       });
     }
     return key;
+  }
+  async updateKeyStatus(id: number, status: Key["status"]): Promise<void> {
+    await this.getKeyById(id);
+    await keyRepository.updateStatus(id, status);
   }
 }

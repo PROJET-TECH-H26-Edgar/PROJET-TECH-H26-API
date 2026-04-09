@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { AuthService } from "../services/auth.service";
-import { LoginUserRequest, RegisterUserRequest } from "../types/user.types";
+import { LoginUserRequest, RegisterUserRequest } from "../types/types.types";
 import { AppError } from "../errors/AppError";
 
 const authService = new AuthService();
@@ -19,7 +19,6 @@ export class AuthController {
         );
       }
 
-     
       const { lastName, name, mail, password } =
         req.body as RegisterUserRequest;
       const token = await authService.registerUser({

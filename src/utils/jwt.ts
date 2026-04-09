@@ -1,4 +1,4 @@
-import { User } from "../types/user.types";
+import { User } from "../types/types.types";
 import jwt from "jsonwebtoken";
 
 // ChatGPT juste pour savoir comment importer jwt et l'utiliser

@@ -27,6 +27,7 @@ export const keys = mysqlTable("thekeys", {
   idRole: int("IdRole").notNull(),
   rfidUid: varchar("RfidUid", { length: 50 }).notNull(),
   createAt: date("CreateAt").notNull(),
+  status: varchar("Status", { length: 30 }).notNull().default("Libérer"),
 });
 
 export const borrow = mysqlTable("Borrow", {
@@ -35,5 +36,4 @@ export const borrow = mysqlTable("Borrow", {
   idKey: int("IdKey").notNull(),
   borrowTime: timestamp("BorrowTime").notNull(),
   returnTime: timestamp("ReturnTime").notNull(),
-  status: varchar("Status", { length: 30 }).notNull(),
 });

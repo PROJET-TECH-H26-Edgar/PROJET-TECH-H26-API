@@ -30,9 +30,8 @@ export interface Key {
 
 export interface Borrow {
   idHBorrow: number;
-  idUser: number;
-  idKey: number;
+  keyName: string;
+  userName: string;
   borrowTime: Date;
   returnTime: Date;
-  status: string;
 }

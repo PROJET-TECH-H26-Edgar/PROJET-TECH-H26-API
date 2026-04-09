@@ -8,6 +8,7 @@ export const keyRouter = (): Router => {
   router.get("/", keyController.getAll);
   router.get("/:id", keyController.getById);
   router.post("/create", keyController.createKey);
+  router.patch("/:id/status", keyController.updateStatus);
 
   return router;
 };

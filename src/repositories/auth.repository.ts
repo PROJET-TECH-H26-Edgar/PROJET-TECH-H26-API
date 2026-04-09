@@ -1,7 +1,7 @@
 import { db } from "../db/connection";
 import { users } from "../db/schema";
 import { eq } from "drizzle-orm";
-import { User } from "../types/user.types";
+import { User } from "../types/types.types";
 
 export class AuthRepository {
   async findById(id: number): Promise<User | null> {
@@ -26,7 +26,7 @@ export class AuthRepository {
       mail: user.mail,
       password: user.password,
       idRole: 1,
-      createAt: new Date(), 
+      createAt: new Date(),
     });
 
     const createdUser = await this.findByMail(user.mail);
