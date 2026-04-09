@@ -3,7 +3,7 @@ import {
   User,
   LoginUserRequest,
   RegisterUserRequest,
-} from "../types/user.types";
+} from "../types/types.types";
 import bcrypt from "bcrypt";
 import { generateToken } from "../utils/jwt";
 import { AppError } from "../errors/AppError";

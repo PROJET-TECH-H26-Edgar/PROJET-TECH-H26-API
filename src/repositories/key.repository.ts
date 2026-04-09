@@ -1,7 +1,7 @@
 import { db } from "../db/connection";
 import { borrow, keys, users } from "../db/schema";
 import { eq } from "drizzle-orm";
-import { Key } from "../types/user.types";
+import { Key } from "../types/types.types";
 
 export class KeyRepository {
   async findAll(): Promise<Key[]> {
