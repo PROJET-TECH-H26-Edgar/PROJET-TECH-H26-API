@@ -32,4 +32,8 @@ export class KeyRepository {
   async updateStatus(id: number, status: Key["status"]): Promise<void> {
     await db.update(keys).set({ status }).where(eq(keys.idKey, id));
   }
+  async findByRfid(rfidUid: string): Promise<Key | null> {
+  const result = await db.select().from(keys).where(eq(keys.rfidUid, rfidUid));
+  return (result[0] as Key) ?? null;
+}
 }

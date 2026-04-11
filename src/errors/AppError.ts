@@ -16,6 +16,8 @@ export type ErrorCode =
   | "REMOTE_SERVICE_ERROR"
   | "RESOURCE_NOT_FOUND"
   | "USER_ALREADY_EXISTS"
+  | "NOT_FOUND"
+  | "KEY_UNAVAILABLE"
   | "CREATION_FAILED";
 interface AppErrorOptions {
   statusCode?: number;
