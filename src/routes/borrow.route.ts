@@ -6,6 +6,9 @@ export const BorrowRouter = (): Router => {
   const borrowController = new BorrowController();
 
   router.get("/", borrowController.getAll);
+  // borrow.routes.ts
+router.post("/", borrowController.create);
+router.patch("/:idKey/complete", borrowController.complete);
 
   return router;
 };

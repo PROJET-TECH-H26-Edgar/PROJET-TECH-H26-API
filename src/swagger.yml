@@ -33,6 +33,7 @@ paths:
       responses:
         201:
           description: User registered
+
   /auth/login:
     post:
       summary: Login user
@@ -62,6 +63,7 @@ paths:
                 properties:
                   token:
                     type: string
+
   /auth/logout:
     post:
       summary: Logout user
@@ -159,6 +161,32 @@ paths:
                       type: string
                     example: [name, idRole, rfidUid]
 
+  /key/rfid/{rfidUid}/return:
+    patch:
+      summary: Detect key return via RFID
+      tags:
+        - Keys
+      parameters:
+        - name: rfidUid
+          in: path
+          required: true
+          schema:
+            type: string
+          example: 8C:76:0B:30
+      responses:
+        200:
+          description: Clé détectée, en attente admin
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Clé détectée, en attente admin
+        404:
+          description: Key not found
+
   /borrows:
     get:
       summary: Get all borrows
@@ -175,6 +203,65 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Borrow"
+    post:
+      summary: Create a borrow
+      tags:
+        - Borrows
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [idKey]
+              properties:
+                idKey:
+                  type: integer
+                  example: 1
+      responses:
+        201:
+          description: Emprunt créé
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Emprunt créé
+        400:
+          description: Clé déjà empruntée
+        404:
+          description: Clé introuvable
+
+  /borrows/{idKey}/complete:
+    patch:
+      summary: Complete a borrow (admin only)
+      tags:
+        - Borrows
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: idKey
+          in: path
+          required: true
+          schema:
+            type: integer
+          example: 1
+      responses:
+        200:
+          description: Emprunt complété
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Emprunt complété
+
 components:
   securitySchemes:
     bearerAuth:

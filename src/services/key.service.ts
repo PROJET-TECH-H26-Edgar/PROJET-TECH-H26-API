@@ -39,4 +39,15 @@ export class KeyService {
     await this.getKeyById(id);
     await keyRepository.updateStatus(id, status);
   }
+  async returnByRfid(rfidUid: string): Promise<void> {
+    const key = await keyRepository.findByRfid(rfidUid);
+    if (!key)
+      throw new AppError("Clé introuvable", {
+        statusCode: 404,
+        code: "NOT_FOUND",
+        details: "",
+      });
+    if (key.status !== "Occupée") return;
+    await keyRepository.updateStatus(key.idKey, "Indisponible");
+  }
 }

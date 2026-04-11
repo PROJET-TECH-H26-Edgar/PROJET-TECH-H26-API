@@ -57,4 +57,13 @@ export class KeyController {
       next(error);
     }
   };
+  returnByRfid = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const rfidUid = req.params.rfidUid as string;
+      await keyService.returnByRfid(rfidUid);
+      res.status(200).json({ message: "Clé détectée, en attente admin" });
+    } catch (error) {
+      next(error);
+    }
+  };
 }

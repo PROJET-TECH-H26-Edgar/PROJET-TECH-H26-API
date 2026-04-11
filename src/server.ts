@@ -9,6 +9,7 @@ import yaml from "yamljs";
 import path from "path";
 import https from "https";
 import swaggerUi from "swagger-ui-express";
+import "./services/mqtt.service";
 
 import { authRouter } from "./routes/auth.routes";
 import { errorHandler } from "./middleware/error.middleware";
@@ -86,10 +87,10 @@ Server Start
 if (process.env.NODE_ENV === "production") {
   const sslOptions = {
     key: fs.readFileSync(
-      "/etc/letsencrypt/live/mobile.edwrdledgar.me/privkey.pem",
+      "/etc/letsencrypt/live/distributeurcle.edwrdledgar.me/privkey.pem",
     ),
     cert: fs.readFileSync(
-      "/etc/letsencrypt/live/mobile.edwrdledgar.me/fullchain.pem",
+      "/etc/letsencrypt/live/distributeurcle.edwrdledgar.me/fullchain.pem",
     ),
   };
 
