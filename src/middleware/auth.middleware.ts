@@ -2,8 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { verifyToken } from "../utils/jwt";
 import { AppError } from "../errors/AppError";
 
-// ChatGPT pour l'idée de mettre l'utilisateur dans la requête et de next() l'erreur plutôt que throw.
-// Je connaissais déjà pour le reste.
+//Code repris aussi de la session précédente de l'api pirate
 export function authenticate(req: Request, _res: Response, next: NextFunction) {
   const authHeader = req.headers["authorization"];
 

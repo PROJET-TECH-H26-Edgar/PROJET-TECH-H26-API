@@ -1,17 +1,20 @@
 import mqtt from "mqtt";
 
-const client = mqtt.connect(process.env.MQTT_URL!);
-const API_URL = process.env.API_URL || "http://localhost:3001";
+const client = mqtt.connect(process.env.MQTT_URL!, {
+  rejectUnauthorized: false,
+});
+
+const API_URL = process.env.API_URL || "https://distributeurcle.edwrdledgar.me";
 
 client.on("connect", () => {
+  console.log("MQTT connecté !");
   client.subscribe("rfid/return");
-  console.log("MQTT connecté, écoute sur rfid/return");
 });
 
 client.on("message", async (topic, message) => {
   if (topic === "rfid/return") {
     const rfidUid = message.toString();
-    console.log("RFID détecté:", rfidUid);
+    console.log("RFID reçu:", rfidUid);
 
     try {
       const response = await fetch(
@@ -30,6 +33,10 @@ client.on("message", async (topic, message) => {
       console.error("Erreur MQTT handler:", error);
     }
   }
+});
+
+client.on("error", (err) => {
+  console.error("MQTT erreur:", err);
 });
 
 export { client };
