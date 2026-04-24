@@ -261,6 +261,22 @@ paths:
                   message:
                     type: string
                     example: Emprunt complété
+  /roles:
+    get:
+      summary: Get all roles
+      tags:
+        - Roles
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: List of roles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Role"
 
 components:
   securitySchemes:
@@ -312,3 +328,12 @@ components:
           type: string
           format: date-time
           example: 2026-03-19T17:00:00Z
+    Role:
+      type: object
+      properties:
+        idRole:
+          type: integer
+          example: 1
+        roleName:
+          type: string
+          example: Admin

@@ -8,11 +8,11 @@ const API_URL = process.env.API_URL || "https://distributeurcle.edwrdledgar.me";
 
 client.on("connect", () => {
   console.log("MQTT connecté !");
-  client.subscribe("rfid/return");
+  client.subscribe("distributeur/rfid");
 });
 
 client.on("message", async (topic, message) => {
-  if (topic === "rfid/return") {
+  if (topic === "distributeur/rfid") {
     const rfidUid = message.toString();
     console.log("RFID reçu:", rfidUid);
 
