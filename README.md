@@ -38,34 +38,34 @@ Le projet utilise un certificat auto-signé Mosquitto situé ici :
 
 Ficher de configuration moquitto
 
-```bash
-sudo nano /etc/mosquitto/mosquitto.conf
-
-
-persistence true
-persistence_location /var/lib/mosquitto/
-
-log_dest file /var/log/mosquitto/mosquitto.log
-
-include_dir /etc/mosquitto/conf.d
-
-# Auth globale (s'applique à tous les listeners)
-allow_anonymous false
-password_file /etc/mosquitto/passwd
-
-# MQTT sécurisé ESP32
-listener 8883
-cafile /etc/mosquitto/certs/mosquitto.crt
-certfile /etc/mosquitto/certs/mosquitto.crt
-keyfile /etc/mosquitto/certs/mosquitto.key
-require_certificate false
-
-# WebSocket pour Expo Go (sans SSL)
-listener 9002
-protocol websockets
-
-```
+   ```bash
+   sudo nano /etc/mosquitto/mosquitto.conf
    
+   
+   persistence true
+   persistence_location /var/lib/mosquitto/
+   
+   log_dest file /var/log/mosquitto/mosquitto.log
+   
+   include_dir /etc/mosquitto/conf.d
+   
+   # Auth globale (s'applique à tous les listeners)
+   allow_anonymous false
+   password_file /etc/mosquitto/passwd
+   
+   # MQTT sécurisé ESP32
+   listener 8883
+   cafile /etc/mosquitto/certs/mosquitto.crt
+   certfile /etc/mosquitto/certs/mosquitto.crt
+   keyfile /etc/mosquitto/certs/mosquitto.key
+   require_certificate false
+   
+   # WebSocket pour Expo Go (sans SSL)
+   listener 9002
+   protocol websockets
+   
+   ```
+      
 2. Installation de MySQL
 
 
