@@ -10,6 +10,7 @@ export const keyRouter = (): Router => {
   router.post("/create", keyController.createKey);
   router.patch("/:id/status", keyController.updateStatus);
   router.patch("/rfid/:rfidUid/return", keyController.returnByRfid);
+  router.delete("/:id", keyController.deleteKey);
 
   return router;
 };

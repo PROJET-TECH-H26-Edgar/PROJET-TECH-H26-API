@@ -23,24 +23,29 @@ export class KeyController {
     }
   };
 
-  async createKey(req: Request, res: Response): Promise<void> {
-    const { name, idRole, rfidUid } = req.body;
+  createKey = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { name, idRole, rfidUid } = req.body;
 
-    if (!name || !idRole || !rfidUid) {
-      res.status(400).json({
-        message: "Champs manquants",
-        required: ["name", "idRole", "rfidUid"],
+      if (!name || !idRole || !rfidUid) {
+        res.status(400).json({
+          message: "Champs manquants",
+          required: ["name", "idRole", "rfidUid"],
+        });
+        return;
+      }
+
+      const key = await keyService.createKey({
+        name,
+        idRole: parseInt(idRole),
+        rfidUid,
       });
-      return;
-    }
 
-    const key = await keyService.createKey({
-      name,
-      idRole: parseInt(idRole),
-      rfidUid,
-    });
-    res.status(201).json(key);
-  }
+      res.status(201).json(key);
+    } catch (error) {
+      next(error);
+    }
+  };
   updateStatus = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const id = parseInt(req.params.id as string);
@@ -62,6 +67,23 @@ export class KeyController {
       const rfidUid = req.params.rfidUid as string;
       await keyService.returnByRfid(rfidUid);
       res.status(200).json({ message: "Clé détectée, en attente admin" });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  deleteKey = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const id = parseInt(req.params.id as string);
+
+      if (isNaN(id)) {
+        res.status(400).json({ message: "ID invalide" });
+        return;
+      }
+
+      await keyService.deleteKey(id);
+
+      res.status(200).json({ message: "Clé supprimée avec succès" });
     } catch (error) {
       next(error);
     }

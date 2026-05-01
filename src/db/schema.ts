@@ -28,6 +28,7 @@ export const keys = mysqlTable("thekeys", {
   rfidUid: varchar("RfidUid", { length: 50 }).notNull(),
   createAt: date("CreateAt").notNull(),
   status: varchar("Status", { length: 30 }).notNull().default("Libérer"),
+  slot: int("slot").notNull(),
 });
 
 export const borrow = mysqlTable("Borrow", {
