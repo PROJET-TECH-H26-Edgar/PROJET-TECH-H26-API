@@ -18,7 +18,8 @@ export type ErrorCode =
   | "USER_ALREADY_EXISTS"
   | "NOT_FOUND"
   | "KEY_UNAVAILABLE"
-  | "CREATION_FAILED";
+  | "CREATION_FAILED"
+  | "NO_SLOT";
 interface AppErrorOptions {
   statusCode?: number;
   code?: ErrorCode;

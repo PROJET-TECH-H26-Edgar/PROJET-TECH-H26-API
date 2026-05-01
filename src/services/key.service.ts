@@ -25,14 +25,21 @@ export class KeyService {
     idRole: number;
     rfidUid: string;
   }): Promise<Key> {
-    const key = await keyRepository.create(data);
-    if (!key) {
-      throw new AppError("Key creation failed", {
-        statusCode: 500,
-        code: "CREATION_FAILED",
-        details: "An error occurred while creating the key",
+    const slot = await keyRepository.findFreeSlot();
+
+    if (!slot) {
+      throw new AppError("No free slot available", {
+        statusCode: 409,
+        code: "NO_SLOT",
+        details: "All 4 slots are occupied",
       });
     }
+
+    const key = await keyRepository.create({
+      ...data,
+      slot,
+    });
+
     return key;
   }
   async updateKeyStatus(id: number, status: Key["status"]): Promise<void> {
@@ -49,5 +56,18 @@ export class KeyService {
       });
     if (key.status !== "Occupée") return;
     await keyRepository.updateStatus(key.idKey, "Indisponible");
+  }
+  async deleteKey(id: number): Promise<void> {
+    const key = await keyRepository.findById(id);
+
+    if (!key) {
+      throw new AppError("Key not found", {
+        statusCode: 404,
+        code: "RESOURCE_NOT_FOUND",
+        details: `Key with id ${id} not found`,
+      });
+    }
+
+    await keyRepository.delete(id);
   }
 }

@@ -26,6 +26,7 @@ export interface Key {
   rfidUid: string;
   createAt: Date;
   status: "Libérer" | "Occupée" | "Indisponible";
+  slot: number;
 }
 
 export interface Borrow {
